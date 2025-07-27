@@ -1,0 +1,40 @@
+{
+  "name": "youtube-midi-converter",
+  "version": "1.0.0",
+  "description": "A web application that extracts audio from YouTube videos and converts it to MIDI files using Spleeter API",
+  "main": "index.html",
+  "scripts": {
+    "start": "python server.py",
+    "dev": "python server.py",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "youtube",
+    "audio",
+    "midi",
+    "spleeter",
+    "music",
+    "converter",
+    "web-app"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/youtube-midi-converter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/youtube-midi-converter/issues"
+  },
+  "homepage": "https://github.com/yourusername/youtube-midi-converter#readme",
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

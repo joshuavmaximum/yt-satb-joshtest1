@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Audio to MIDI Converter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-music"></i> YouTube Audio to MIDI Converter</h1>
+            <p>Extract audio from YouTube videos and convert to 5 separate MIDI tracks</p>
+        </header>
+
+        <main class="main-content">
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="youtube-url">YouTube Video URL:</label>
+                    <div class="url-input-container">
+                        <input type="url" id="youtube-url" placeholder="https://www.youtube.com/watch?v=..." required>
+                        <button type="button" id="validate-btn" class="validate-btn">
+                            <i class="fas fa-check"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="options-section">
+                    <h3>Processing Options</h3>
+                    <div class="options-grid">
+                        <div class="option-group">
+                            <label for="audio-quality">Audio Quality:</label>
+                            <select id="audio-quality">
+                                <option value="high">High Quality</option>
+                                <option value="medium" selected>Medium Quality</option>
+                                <option value="low">Low Quality</option>
+                            </select>
+                        </div>
+                        <div class="option-group">
+                            <label for="midi-resolution">MIDI Resolution:</label>
+                            <select id="midi-resolution">
+                                <option value="480">480 Ticks/Beat</option>
+                                <option value="240" selected>240 Ticks/Beat</option>
+                                <option value="120">120 Ticks/Beat</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" id="process-btn" class="process-btn" disabled>
+                    <i class="fas fa-cogs"></i> Process Video
+                </button>
+            </div>
+
+            <div class="progress-section" id="progress-section" style="display: none;">
+                <h3>Processing Progress</h3>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-text" id="progress-text">Initializing...</div>
+                </div>
+                <div class="status-log" id="status-log"></div>
+            </div>
+
+            <div class="results-section" id="results-section" style="display: none;">
+                <h3>Generated MIDI Files</h3>
+                <div class="midi-tracks" id="midi-tracks">
+                    <!-- MIDI tracks will be displayed here -->
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3>How it works</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <i class="fas fa-link"></i>
+                        <h4>1. Extract Audio</h4>
+                        <p>Downloads and extracts audio from the YouTube video using yt-dlp</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-cut"></i>
+                        <h4>2. Split Audio</h4>
+                        <p>Uses Spleeter to separate the audio into 5 stems: vocals, drums, bass, piano, and other</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-music"></i>
+                        <h4>3. Convert to MIDI</h4>
+                        <p>Converts each audio stem to MIDI using pitch detection and rhythm analysis</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-download"></i>
+                        <h4>4. Download Files</h4>
+                        <p>Download individual MIDI files for each instrument track</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Powered by Spleeter API and Web Audio API</p>
+        </footer>
+    </div>
+
+    <!-- Loading Modal -->
+    <div class="modal" id="loading-modal">
+        <div class="modal-content">
+            <div class="spinner"></div>
+            <h3>Processing Your Video</h3>
+            <p>This may take a few minutes depending on the video length...</p>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
